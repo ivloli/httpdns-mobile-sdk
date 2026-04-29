@@ -4,27 +4,23 @@
 
 本文档说明客户下载 Demo 压缩包后，如何在本地快速运行并验证 HTTPDNS 解析。
 
-## 一、下载与解压
+## 一、仓库目录说明
 
-下载压缩包：
-
-- `httpdns-android-demo-with-sdk.zip`
-
-解压后请保持以下目录同级：
+在本仓库中，目录关系如下：
 
 - `httpdns-android-demo`
-- `httpdns-android-sdk`
+- `android-sdk`
 
 说明：
 
-- Demo 工程通过 `project(":httpdns-android-sdk")` 依赖本地 SDK 源码。
-- 如果目录层级变化，Gradle 可能找不到 SDK 模块。
+- Demo 工程通过 `project(":httpdns-android-sdk")` 依赖本地 `../android-sdk` 源码。
+- 若你移动 Demo 工程，请同步修改 `httpdns-android-demo/settings.gradle.kts` 里的 `projectDir`。
 
 ## 二、打开工程
 
 1. 打开 Android Studio。
 2. 选择 `Open`。
-3. 选择目录：`httpdns-android-demo`。
+3. 选择目录：`httpdns-mobile-sdk/httpdns-android-demo`。
 4. 等待 Gradle Sync 完成。
 
 ## 三、运行 Demo
@@ -54,7 +50,7 @@
 
 ### 1) Gradle Sync 失败
 
-- 检查 `httpdns-android-demo` 与 `httpdns-android-sdk` 是否同级。
+- 检查 `httpdns-android-demo/settings.gradle.kts` 中 `project(":httpdns-android-sdk").projectDir` 是否指向 `../android-sdk`。
 - 检查网络是否可访问依赖仓库（`google()`、`mavenCentral()`）。
 
 ### 2) 点击解析后无结果或报错
@@ -70,12 +66,12 @@
 
 ## 六、命令行验证（可选）
 
-当前 Demo 默认通过 Android Studio 直接运行，不依赖 `gradlew`。
+当前 Demo 默认通过 Android Studio 直接运行。
 
-若客户环境已安装全局 Gradle，也可在 `httpdns-android-demo` 目录执行：
+如需命令行验证，可在 `httpdns-android-demo` 目录执行：
 
 ```bash
-gradle :app:assembleDebug
+./gradlew :app:assembleDebug
 ```
 
 作用：

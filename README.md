@@ -6,6 +6,8 @@
 
 - `android-sdk/`：Android SDK 代码与文档
 - `ios-sdk/`：iOS SDK 代码与文档
+- `httpdns-android-demo/`：Android Studio Demo 工程
+- `httpdns-ios-demo/`：Xcode Demo 工程
 
 ## 文档位置
 
