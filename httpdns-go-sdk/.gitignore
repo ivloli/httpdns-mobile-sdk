@@ -1,0 +1,19 @@
+# Binaries
+bin/
+dist/
+build/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Go build/test outputs
+*.test
+*.out
+coverage.out
+
+# Logs
+*.log
+
+# macOS
+.DS_Store

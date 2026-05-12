@@ -1,0 +1,13 @@
+service:
+  host: "0.0.0.0"
+  port: 38088
+
+httpdns:
+  account_id: "430992419037876224"
+  aes_key: "78eb9332f1fc18a45597dbf332858ff4"
+  sign_key: "dad86fd831014d1b2364d5b98f767bcb"
+  sign_algorithm: "hmac-sha1"
+  sign_param_name: "sign"
+  dispatch_host: "r.pp.fgnlo.com"
+  resolve_host: "r.dp.dgovl.com"
+  default_sdns_os: "ios"
