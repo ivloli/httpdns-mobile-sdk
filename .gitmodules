@@ -2,3 +2,7 @@
 	path = third_party/scloud-eks-deploy
 	url = git@gitlab.gainetics.io:backend-cdn/scloud-eks-deploy.git
 	branch = main
+[submodule "third_party/build-tools"]
+	path = third_party/build-tools
+	url = git@gitlab.gainetics.io:shared/build-tools.git
+	branch = main
