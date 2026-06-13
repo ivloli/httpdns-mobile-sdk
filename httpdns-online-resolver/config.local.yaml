@@ -1,0 +1,25 @@
+service:
+  host: "0.0.0.0"
+  port: 38088
+  timeout_seconds: 10
+  dispatch_refresh_interval_seconds: 3600
+
+httpdns:
+  account_id: "430992419037876224"
+  aes_key: "78eb9332f1fc18a45597dbf332858ff4"
+  sign_key: "dad86fd831014d1b2364d5b98f767bcb"
+  sign_algorithm: "hmac-sha1"
+  sign_param_name: "sign"
+  dispatch_host: "r.pp.fgnlo.com"
+  resolve_host: "r.dp.dgovl.com"
+  default_sdns_os: "ios"
+
+ip2region:
+  v4_xdb: "./tmp/ip2region/ip2region_v4.xdb"
+  v6_xdb: "./tmp/ip2region/ip2region_v6.xdb"
+  auto_update: true
+  update_interval_seconds: 3600
+  download_timeout_seconds: 1200
+  releases_url: "https://api.github.com/repos/lionsoul2014/ip2region/releases/latest"
+  github_token: "${GITHUB_TOKEN}"
+  version_file: "./tmp/ip2region/.ip2region_release_tag"
