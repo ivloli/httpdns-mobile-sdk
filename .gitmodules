@@ -1,0 +1,4 @@
+[submodule "third_party/scloud-eks-deploy"]
+	path = third_party/scloud-eks-deploy
+	url = git@gitlab.gainetics.io:backend-cdn/scloud-eks-deploy.git
+	branch = main
