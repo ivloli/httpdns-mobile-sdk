@@ -27,14 +27,20 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends ca-certificates tzdata \
     && rm -rf /var/lib/apt/lists/*
 
+RUN groupadd --gid 65532 app \
+    && useradd --uid 65532 --gid 65532 --no-create-home --home-dir /nonexistent --shell /usr/sbin/nologin app
+
 WORKDIR /app
 
 COPY --from=builder /out/httpdns-online-resolver-go /app/httpdns-online-resolver-go
 COPY --from=builder /out/ip2region/ip2region_v4.xdb /opt/ip2region/data/ip2region_v4.xdb
 COPY --from=builder /out/ip2region/ip2region_v6.xdb /opt/ip2region/data/ip2region_v6.xdb
 
-RUN mkdir -p /etc/httpdns-online-resolver-go /opt/ip2region/data
+RUN mkdir -p /etc/httpdns-online-resolver-go /opt/ip2region/data \
+    && chown -R 65532:65532 /app /etc/httpdns-online-resolver-go /opt/ip2region
 
 EXPOSE 8088 38088
+
+USER 65532:65532
 
 ENTRYPOINT ["/app/httpdns-online-resolver-go"]
