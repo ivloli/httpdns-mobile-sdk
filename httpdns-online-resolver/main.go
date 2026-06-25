@@ -49,14 +49,14 @@ type Config struct {
 		DefaultOS    string `yaml:"default_sdns_os"`
 	} `yaml:"httpdns"`
 	IP2Region struct {
-		V4XDB                 string `yaml:"v4_xdb"`
-		V6XDB                 string `yaml:"v6_xdb"`
-		AutoUpdate            bool   `yaml:"auto_update"`
-		UpdateIntervalSeconds int    `yaml:"update_interval_seconds"`
-		DownloadTimeoutSeconds int   `yaml:"download_timeout_seconds"`
-		ReleasesURL           string `yaml:"releases_url"`
-		GithubToken           string `yaml:"github_token"`
-		VersionFile           string `yaml:"version_file"`
+		V4XDB                  string `yaml:"v4_xdb"`
+		V6XDB                  string `yaml:"v6_xdb"`
+		AutoUpdate             bool   `yaml:"auto_update"`
+		UpdateIntervalSeconds  int    `yaml:"update_interval_seconds"`
+		DownloadTimeoutSeconds int    `yaml:"download_timeout_seconds"`
+		ReleasesURL            string `yaml:"releases_url"`
+		GithubToken            string `yaml:"github_token"`
+		VersionFile            string `yaml:"version_file"`
 	} `yaml:"ip2region"`
 }
 
@@ -243,22 +243,24 @@ func (a *App) resolve(w http.ResponseWriter, r *http.Request) {
 	errs := map[string]string{}
 	if host == "" {
 		errs["host"] = "请输入解析域名" }
-	
+	}
+
 	if host != "" && !isValidDomain(host) {
 		errs["host"] = "请输入正确域名" }
 	
-	if cip == "" {
-		errs["cip"] = "请输入客户端IP" }
-	
+
 	if resolveType == "" && q == "" {
 		errs["resolve_type"] = "请选择解析类型" }
 	
+
 	if resolveType != "" && parseQ(resolveType) == "" {
 		errs["resolve_type"] = "解析类型仅支持 A / AAAA / A+AAAAA" }
 	
+
 	if q != "" && q != "4" && q != "6" && q != "4,6" {
 		errs["q"] = "q 仅支持 4 / 6 / 4,6" }
 	
+
 	if len(errs) > 0 {
 		errorText := "validation failed"
 		if msg, ok := errs["host"]; ok {
