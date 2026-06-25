@@ -242,24 +242,28 @@ func (a *App) resolve(w http.ResponseWriter, r *http.Request) {
 	}
 	errs := map[string]string{}
 	if host == "" {
-		errs["host"] = "请输入解析域名" }
+		errs["host"] = "请输入解析域名"
 	}
 
 	if host != "" && !isValidDomain(host) {
-		errs["host"] = "请输入正确域名" }
-	
+		errs["host"] = "请输入正确域名"
+	}
+
 
 	if resolveType == "" && q == "" {
-		errs["resolve_type"] = "请选择解析类型" }
-	
+		errs["resolve_type"] = "请选择解析类型"
+	}
+
 
 	if resolveType != "" && parseQ(resolveType) == "" {
-		errs["resolve_type"] = "解析类型仅支持 A / AAAA / A+AAAAA" }
-	
+		errs["resolve_type"] = "解析类型仅支持 A / AAAA / A+AAAAA"
+	}
+
 
 	if q != "" && q != "4" && q != "6" && q != "4,6" {
-		errs["q"] = "q 仅支持 4 / 6 / 4,6" }
-	
+		errs["q"] = "q 仅支持 4 / 6 / 4,6"
+	}
+
 
 	if len(errs) > 0 {
 		errorText := "validation failed"
